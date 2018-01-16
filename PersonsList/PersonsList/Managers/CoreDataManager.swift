@@ -27,7 +27,6 @@ class CoreDataStack {
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         let url = applicationDocumentsDirectory.appendingPathComponent("PersonsList.sqlite") // type your database name here...
-        print("========================================= \nPath of database == \(url)")
         var failureReason = "There was an error creating or loading the application's saved data."
         let options = [NSMigratePersistentStoresAutomaticallyOption: NSNumber(value: true as Bool), NSInferMappingModelAutomaticallyOption: NSNumber(value: true as Bool)]
         do {
@@ -55,7 +54,6 @@ class CoreDataStack {
     }()
     
     // MARK: - Core Data Saving support
-    
     static func saveContext () {
         if managedObjectContext.hasChanges {
             do {

@@ -58,7 +58,7 @@ class PersonObject: NSObject {
         address = info["address"] ?? ""
         contactPerson = info["contact_person"] ?? ""
         contactPersonMobileNumber = info["contact_person_mobile_number"] ?? ""
-        setDate()
+        setAge()
     }
     
     convenience init(core : Person) {
@@ -74,14 +74,22 @@ class PersonObject: NSObject {
         age = Int(core.age)
         
     }
+
+}
+
+
+extension PersonObject {
     
-    private func setDate() {
+    var fullName : String {
+        return firstName + " " + lastName
+    }
+    
+    func setAge() {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, yyyy"
         let birthDate = formatter.date(from: birthday)
         age = birthDate!.age
     }
-    
-}
 
+}
 
